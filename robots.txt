@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://descontado.lppjunior.com/sitemap.xml
