@@ -32,3 +32,9 @@ Depois acesse `http://localhost:4173`.
 
 O conteúdo descreve o escopo planejado sem apresentar recursos do MVP ainda em desenvolvimento
 como funcionalidades já disponíveis. A navegação entre seções é feita na própria página.
+
+---
+
+Copyright (c) 2026 UPDN Tecnologia da Informação. Todos os direitos reservados.
+
+É proibida a reprodução, distribuição ou alteração deste código sem autorização expressa do autor.
