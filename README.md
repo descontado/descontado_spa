@@ -46,6 +46,15 @@ Depois acesse `http://localhost:4173`.
 Não há testes automatizados. Confira o layout em larguras de celular e desktop e a prévia de
 compartilhamento antes de publicar.
 
+```powershell
+npm install
+npm run lint
+```
+
+O lint verifica o `script.js`; o `package.json` existe só para ele, e o site continua sem build. Os
+hooks de `.githooks/`, ativados pelo `npm install`, recusam commit e push na `main` e rodam o lint
+antes de cada commit. O CI (`.github/workflows/ci.yml`) roda o lint em todo Pull Request.
+
 ## Estrutura
 
 ```text
@@ -58,6 +67,9 @@ robots.txt          Regras para buscadores
 sitemap.xml         Mapa do site
 BingSiteAuth.xml    Verificação do Bing Webmaster Tools
 favicon.ico, apple-touch-icon.png
+package.json        Só para o lint (ESLint)
+.githooks/          Hooks de Git (pre-commit e pre-push)
+.github/workflows/ci.yml  CI do Pull Request
 ```
 
 ---
