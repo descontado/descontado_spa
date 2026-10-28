@@ -1,0 +1,12 @@
+#!/bin/sh
+# Bloqueia commit direto na main e roda o lint antes de cada commit.
+# Ativado pelo script prepare do npm install (git config core.hooksPath .githooks).
+
+branch=$(git symbolic-ref --short -q HEAD)
+if [ "$branch" = "main" ]; then
+  echo "pre-commit: commit direto na main não é permitido. Trabalhe na develop e abra um Pull Request para a main." >&2
+  exit 1
+fi
+
+[ -f package.json ] || exit 0
+npm run lint --if-present

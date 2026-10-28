@@ -5,7 +5,8 @@
   "description": "Site institucional do Descontado: uma página estática, responsiva e sem etapa de build",
   "scripts": {
     "lint": "eslint --max-warnings=0 .",
-    "lint:fix": "eslint --fix --max-warnings=0 ."
+    "lint:fix": "eslint --fix --max-warnings=0 .",
+    "prepare": "git config core.hooksPath .githooks || exit 0"
   },
   "engines": {
     "node": ">=26.0.0"
