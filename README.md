@@ -41,10 +41,26 @@ python -m http.server 4173
 
 Depois acesse `http://localhost:4173`.
 
+## Publicação
+
+O site é publicado no [Vercel](https://vercel.com) e segue as diretrizes de
+[`docs/vercel.md`](../../docs/vercel.md) do workspace. No Vercel, o projeto usa o Framework Preset
+**Other**, sem Build Command, e os arquivos da raiz são servidos como estão. O `engines.node`
+(`>=26.0.0`) resolve para o Node.js 26, suportado pelo Vercel.
+
 ## Testes
 
 Não há testes automatizados. Confira o layout em larguras de celular e desktop e a prévia de
 compartilhamento antes de publicar.
+
+```powershell
+npm install
+npm run lint
+```
+
+O lint verifica o `script.js`; o `package.json` existe só para ele, e o site continua sem build. Os
+hooks de `.githooks/`, ativados pelo `npm install`, recusam commit e push na `main` e rodam o lint
+antes de cada commit. O CI (`.github/workflows/ci.yml`) roda o lint em todo Pull Request.
 
 ## Estrutura
 
@@ -58,6 +74,9 @@ robots.txt          Regras para buscadores
 sitemap.xml         Mapa do site
 BingSiteAuth.xml    Verificação do Bing Webmaster Tools
 favicon.ico, apple-touch-icon.png
+package.json        Só para o lint (ESLint)
+.githooks/          Hooks de Git (pre-commit e pre-push)
+.github/workflows/ci.yml  CI do Pull Request
 ```
 
 ---

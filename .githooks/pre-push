@@ -1,0 +1,13 @@
+#!/bin/sh
+# Bloqueia push para a main e roda os testes antes de cada push.
+# Ativado pelo script prepare do npm install (git config core.hooksPath .githooks).
+
+while read -r _local_ref _local_sha remote_ref _remote_sha; do
+  if [ "$remote_ref" = "refs/heads/main" ]; then
+    echo "pre-push: push para a main não é permitido. Envie a develop e abra um Pull Request para a main." >&2
+    exit 1
+  fi
+done
+
+[ -f package.json ] || exit 0
+npm test --if-present
