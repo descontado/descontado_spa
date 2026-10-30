@@ -41,6 +41,13 @@ python -m http.server 4173
 
 Depois acesse `http://localhost:4173`.
 
+## Publicação
+
+O site é publicado no [Vercel](https://vercel.com) e segue as diretrizes de
+[`docs/vercel.md`](../../docs/vercel.md) do workspace. No Vercel, o projeto usa o Framework Preset
+**Other**, sem Build Command, e os arquivos da raiz são servidos como estão. O `engines.node`
+(`>=26.0.0`) resolve para o Node.js 26, suportado pelo Vercel.
+
 ## Testes
 
 Não há testes automatizados. Confira o layout em larguras de celular e desktop e a prévia de
