@@ -1200,7 +1200,7 @@ h3 {
   justify-content: space-between;
   gap: 30px;
   color: #8b837c;
-  font-size: 9px;
+  font-size: 11px;
 }
 
 .footer-legal p {
@@ -1208,6 +1208,97 @@ h3 {
   margin: 0;
   text-align: right;
   line-height: 1.6;
+}
+
+.footer-company {
+  display: grid;
+  gap: 4px;
+  padding-block: 14px;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+}
+
+.footer-links a {
+  color: #6e6761;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.footer-links a:hover {
+  color: var(--orange);
+}
+
+.legal-page {
+  padding-block: 64px 96px;
+}
+
+.legal-content {
+  max-width: 760px;
+}
+
+.legal-content h1 {
+  margin-bottom: 12px;
+  font-size: clamp(34px, 5vw, 48px);
+  font-weight: 800;
+  letter-spacing: -2px;
+  line-height: 1.1;
+}
+
+.legal-updated {
+  margin-bottom: 40px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.legal-content h2 {
+  margin: 40px 0 12px;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.legal-content h3 {
+  margin: 28px 0 8px;
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.footer-legal p a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.legal-content p,
+.legal-content li {
+  color: #4f4945;
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.legal-content ul {
+  padding-left: 22px;
+}
+
+.legal-content a {
+  color: #b85108;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.legal-company {
+  padding: 20px 24px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--white);
+}
+
+.legal-company p {
+  margin: 0;
 }
 
 @media (max-width: 960px) {
@@ -1750,7 +1841,7 @@ h3 {
     flex-direction: column;
     gap: 8px;
     padding-block: 16px 21px;
-    font-size: 8px;
+    font-size: 11px;
   }
 
   .footer-legal p {
@@ -1760,6 +1851,19 @@ h3 {
 
   .site-footer {
     padding-bottom: 76px;
+  }
+
+  .footer-company {
+    padding-block: 0;
+  }
+
+  .legal-page {
+    padding-block: 40px 64px;
+  }
+
+  .legal-content p,
+  .legal-content li {
+    font-size: 14px;
   }
 
   .mobile-cta {
