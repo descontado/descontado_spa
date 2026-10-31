@@ -37,6 +37,13 @@ if (mobileCta && inlineCtas.length > 0 && "IntersectionObserver" in window) {
   inlineCtas.forEach((cta) => observer.observe(cta));
 }
 
+const adSlots = document.querySelectorAll("ins.adsbygoogle");
+
+if (adSlots.length > 0) {
+  window.adsbygoogle = window.adsbygoogle || [];
+  adSlots.forEach(() => window.adsbygoogle.push({}));
+}
+
 if (currentYear) {
   currentYear.textContent = String(new Date().getFullYear());
 }

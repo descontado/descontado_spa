@@ -1156,6 +1156,40 @@ h3 {
   height: 310px;
 }
 
+.ad-band {
+  padding-block: 32px;
+}
+
+.ad-slot {
+  position: relative;
+  min-height: 250px;
+  padding-top: 24px;
+}
+
+.ad-slot-compact {
+  min-height: 200px;
+}
+
+.ad-slot .adsbygoogle {
+  width: 100%;
+}
+
+/* Esconde o bloco quando o AdSense não tem anúncio para exibir */
+.ad-slot:has(.adsbygoogle[data-ad-status="unfilled"]) {
+  display: none;
+}
+
+.ad-label {
+  position: absolute;
+  top: 4px;
+  left: 0;
+  color: #8b837c;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
 .mobile-cta {
   display: none;
 }
@@ -1288,6 +1322,10 @@ h3 {
   color: #b85108;
   text-decoration: underline;
   text-underline-offset: 2px;
+}
+
+.legal-ad {
+  margin-block: 40px;
 }
 
 .legal-company {
@@ -1851,6 +1889,18 @@ h3 {
 
   .site-footer {
     padding-bottom: 76px;
+  }
+
+  .ad-band {
+    padding-block: 20px;
+  }
+
+  .ad-slot {
+    min-height: 280px;
+  }
+
+  .ad-slot-compact {
+    min-height: 250px;
   }
 
   .footer-company {
