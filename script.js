@@ -19,6 +19,31 @@ if (menuToggle && siteNav) {
   });
 }
 
+const mobileCta = document.querySelector(".mobile-cta");
+const inlineCtas = document.querySelectorAll('[data-cta="hero"], [data-cta="final"]');
+
+if (mobileCta && inlineCtas.length > 0 && "IntersectionObserver" in window) {
+  const visibleCtas = new Set();
+  const observer = new IntersectionObserver((entries) => {
+    for (const entry of entries) {
+      if (entry.isIntersecting) {
+        visibleCtas.add(entry.target);
+      } else {
+        visibleCtas.delete(entry.target);
+      }
+    }
+    mobileCta.classList.toggle("is-hidden", visibleCtas.size > 0);
+  });
+  inlineCtas.forEach((cta) => observer.observe(cta));
+}
+
+const adSlots = document.querySelectorAll("ins.adsbygoogle");
+
+if (adSlots.length > 0) {
+  window.adsbygoogle = window.adsbygoogle || [];
+  adSlots.forEach(() => window.adsbygoogle.push({}));
+}
+
 if (currentYear) {
   currentYear.textContent = String(new Date().getFullYear());
 }

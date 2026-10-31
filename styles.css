@@ -7,6 +7,7 @@
   --orange: #ff6d00;
   --red: #e53935;
   --yellow: #ffc107;
+  --whatsapp: #1da851;
   --line: #eee8e1;
   --font-body: "DM Sans", sans-serif;
   --font-display: "Manrope", sans-serif;
@@ -187,6 +188,23 @@ button {
   box-shadow: 0 12px 26px rgb(255 109 0 / 30%);
 }
 
+.button-whatsapp {
+  background: var(--whatsapp);
+  box-shadow: 0 9px 22px rgb(29 168 81 / 24%);
+  color: var(--white);
+}
+
+.button-whatsapp:hover {
+  background: #188f45;
+  box-shadow: 0 12px 26px rgb(29 168 81 / 34%);
+}
+
+.button-large {
+  min-height: 60px;
+  padding-inline: 30px;
+  font-size: 16px;
+}
+
 .menu-toggle {
   display: none;
 }
@@ -246,22 +264,27 @@ h3 {
 
 .hero h1 {
   margin-bottom: 22px;
-  font-size: clamp(52px, 6.2vw, 76px);
+  font-size: clamp(46px, 5.4vw, 66px);
   font-weight: 800;
-  letter-spacing: -5.5px;
-  line-height: 1.02;
+  letter-spacing: -3.5px;
+  line-height: 1.04;
 }
 
 .hero h1 span {
   color: var(--orange);
+  white-space: nowrap;
 }
 
 .hero-description {
   max-width: 490px;
   margin-bottom: 30px;
   color: var(--muted);
-  font-size: 16px;
-  line-height: 1.8;
+  font-size: 17px;
+  line-height: 1.75;
+}
+
+.hero-description strong {
+  color: var(--ink);
 }
 
 .hero-actions {
@@ -286,46 +309,51 @@ h3 {
   transform: translateX(4px);
 }
 
-.hero-note {
+.cta-assurances {
   display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-top: 55px;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  margin: 22px 0 0;
+  padding: 0;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+  list-style: none;
 }
 
-.note-icon,
-.floating-icon {
+.cta-assurances li {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.cta-assurances li::before {
+  color: #19824b;
+  content: "✓";
+  font-weight: 700;
+}
+
+.cta-assurances-light {
+  color: #d4cbc4;
+}
+
+.cta-assurances-light li::before {
+  color: #7fd6a4;
+}
+
+.discount-badge {
   display: grid;
   flex: 0 0 auto;
-  width: 39px;
-  height: 39px;
+  width: 44px;
+  height: 44px;
   place-items: center;
   border-radius: 12px;
-  background: #fff0df;
-  color: #e66b08;
-}
-
-.note-icon svg,
-.floating-icon svg {
-  width: 20px;
-  height: 20px;
-  fill: none;
-  stroke: currentColor;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 1.6;
-}
-
-.hero-note p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 11px;
-  line-height: 1.5;
-}
-
-.hero-note strong {
-  color: var(--ink);
-  font-size: 12px;
+  background: var(--orange);
+  color: var(--white);
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
 }
 
 .hero-visual {
@@ -513,6 +541,77 @@ h3 {
   color: var(--muted);
   font-size: 14px;
   line-height: 1.8;
+}
+
+.section-heading h2 > span {
+  color: #e86504;
+}
+
+.benefits-section {
+  padding-block: 100px;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 17px;
+}
+
+.benefit-card {
+  padding: 30px 28px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--white);
+}
+
+.benefit-card-highlight {
+  border-color: transparent;
+  background: var(--orange);
+  box-shadow: 0 18px 40px rgb(255 109 0 / 22%);
+  color: var(--white);
+}
+
+.benefit-number {
+  display: block;
+  margin-bottom: 14px;
+  color: var(--orange);
+  font-family: var(--font-display);
+  font-size: 44px;
+  font-weight: 800;
+  letter-spacing: -2px;
+  line-height: 1;
+}
+
+.benefit-number small {
+  font-size: 0.6em;
+}
+
+.benefit-card-highlight .benefit-number {
+  color: var(--white);
+}
+
+.benefit-card h3 {
+  margin-bottom: 8px;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.4px;
+}
+
+.benefit-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.benefit-card-highlight p {
+  color: rgb(255 255 255 / 90%);
+}
+
+.section-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
 }
 
 .section-how {
@@ -916,6 +1015,64 @@ h3 {
   font-size: 15px;
 }
 
+.faq-section {
+  padding-block: 40px 100px;
+}
+
+.faq-container {
+  max-width: 760px;
+}
+
+.faq-list {
+  display: grid;
+  gap: 10px;
+}
+
+.faq-item {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--white);
+}
+
+.faq-item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 22px;
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  list-style: none;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::after {
+  flex: 0 0 auto;
+  color: var(--orange);
+  content: "+";
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1;
+  transition: transform 160ms ease;
+}
+
+.faq-item[open] summary::after {
+  transform: rotate(45deg);
+}
+
+.faq-item p {
+  margin: 0;
+  padding: 0 22px 18px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
 .contact-section {
   padding-block: 22px 96px;
 }
@@ -999,6 +1156,44 @@ h3 {
   height: 310px;
 }
 
+.ad-band {
+  padding-block: 32px;
+}
+
+.ad-slot {
+  position: relative;
+  min-height: 250px;
+  padding-top: 24px;
+}
+
+.ad-slot-compact {
+  min-height: 200px;
+}
+
+.ad-slot .adsbygoogle {
+  width: 100%;
+}
+
+/* Esconde o bloco quando o AdSense não tem anúncio para exibir */
+.ad-slot:has(.adsbygoogle[data-ad-status="unfilled"]) {
+  display: none;
+}
+
+.ad-label {
+  position: absolute;
+  top: 4px;
+  left: 0;
+  color: #8b837c;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.mobile-cta {
+  display: none;
+}
+
 .site-footer {
   background: #fffdfb;
 }
@@ -1039,7 +1234,7 @@ h3 {
   justify-content: space-between;
   gap: 30px;
   color: #8b837c;
-  font-size: 9px;
+  font-size: 11px;
 }
 
 .footer-legal p {
@@ -1047,6 +1242,101 @@ h3 {
   margin: 0;
   text-align: right;
   line-height: 1.6;
+}
+
+.footer-company {
+  display: grid;
+  gap: 4px;
+  padding-block: 14px;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+}
+
+.footer-links a {
+  color: #6e6761;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.footer-links a:hover {
+  color: var(--orange);
+}
+
+.legal-page {
+  padding-block: 64px 96px;
+}
+
+.legal-content {
+  max-width: 760px;
+}
+
+.legal-content h1 {
+  margin-bottom: 12px;
+  font-size: clamp(34px, 5vw, 48px);
+  font-weight: 800;
+  letter-spacing: -2px;
+  line-height: 1.1;
+}
+
+.legal-updated {
+  margin-bottom: 40px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.legal-content h2 {
+  margin: 40px 0 12px;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.legal-content h3 {
+  margin: 28px 0 8px;
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.footer-legal p a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.legal-content p,
+.legal-content li {
+  color: #4f4945;
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.legal-content ul {
+  padding-left: 22px;
+}
+
+.legal-content a {
+  color: #b85108;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.legal-ad {
+  margin-block: 40px;
+}
+
+.legal-company {
+  padding: 20px 24px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--white);
+}
+
+.legal-company p {
+  margin: 0;
 }
 
 @media (max-width: 960px) {
@@ -1209,14 +1499,14 @@ h3 {
 
   .hero h1 {
     margin-bottom: 17px;
-    font-size: clamp(49px, 13vw, 68px);
-    letter-spacing: -4px;
+    font-size: clamp(40px, 11vw, 56px);
+    letter-spacing: -2.5px;
   }
 
   .hero-description {
     max-width: 470px;
     margin-bottom: 23px;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.7;
   }
 
@@ -1231,8 +1521,14 @@ h3 {
     font-size: 12px;
   }
 
-  .hero-note {
-    margin-top: 28px;
+  .button-large {
+    width: 100%;
+    min-height: 56px;
+    font-size: 16px;
+  }
+
+  .cta-assurances {
+    font-size: 12px;
   }
 
   .hero-visual {
@@ -1272,10 +1568,11 @@ h3 {
     font-size: 8px;
   }
 
-  .floating-icon {
-    width: 32px;
-    height: 32px;
+  .discount-badge {
+    width: 36px;
+    height: 36px;
     border-radius: 10px;
+    font-size: 11px;
   }
 
   .check-badge {
@@ -1358,7 +1655,38 @@ h3 {
   }
 
   .step-card p {
-    font-size: 10px;
+    font-size: 12px;
+  }
+
+  .benefits-section {
+    padding-block: 64px;
+  }
+
+  .benefits-grid {
+    grid-template-columns: 1fr;
+    gap: 11px;
+  }
+
+  .benefit-card {
+    padding: 24px 22px;
+  }
+
+  .benefit-number {
+    font-size: 38px;
+  }
+
+  .faq-section {
+    padding-block: 20px 64px;
+  }
+
+  .faq-item summary {
+    padding: 16px 18px;
+    font-size: 14px;
+  }
+
+  .faq-item p {
+    padding: 0 18px 16px;
+    font-size: 13px;
   }
 
   .section-footnote {
@@ -1434,7 +1762,7 @@ h3 {
   }
 
   .roadmap-item p {
-    font-size: 9px;
+    font-size: 11px;
   }
 
   .roadmap-item:not(:nth-last-of-type(1))::after {
@@ -1499,7 +1827,7 @@ h3 {
 
   .contact-content > p:not(.eyebrow) {
     max-width: 300px;
-    font-size: 11px;
+    font-size: 14px;
     line-height: 1.7;
   }
 
@@ -1551,12 +1879,85 @@ h3 {
     flex-direction: column;
     gap: 8px;
     padding-block: 16px 21px;
-    font-size: 8px;
+    font-size: 11px;
   }
 
   .footer-legal p {
     max-width: none;
     text-align: left;
+  }
+
+  .site-footer {
+    padding-bottom: 76px;
+  }
+
+  .ad-band {
+    padding-block: 20px;
+  }
+
+  .ad-slot {
+    min-height: 280px;
+  }
+
+  .ad-slot-compact {
+    min-height: 250px;
+  }
+
+  .footer-company {
+    padding-block: 0;
+  }
+
+  .legal-page {
+    padding-block: 40px 64px;
+  }
+
+  .legal-content p,
+  .legal-content li {
+    font-size: 14px;
+  }
+
+  .mobile-cta {
+    position: fixed;
+    z-index: 10;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 19px calc(10px + env(safe-area-inset-bottom));
+    border-top: 1px solid var(--line);
+    background: rgb(255 250 245 / 96%);
+    box-shadow: 0 -10px 24px rgb(35 24 12 / 8%);
+    backdrop-filter: blur(14px);
+    transition: transform 200ms ease;
+  }
+
+  .mobile-cta.is-hidden {
+    transform: translateY(110%);
+  }
+
+  .mobile-cta p {
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.3;
+  }
+
+  .mobile-cta strong {
+    display: block;
+    color: var(--orange);
+    font-family: var(--font-display);
+    font-size: 16px;
+  }
+
+  .mobile-cta span {
+    color: var(--muted);
+  }
+
+  .mobile-cta .button {
+    min-height: 46px;
+    font-size: 14px;
   }
 }
 
