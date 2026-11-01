@@ -37,11 +37,68 @@ if (mobileCta && inlineCtas.length > 0 && "IntersectionObserver" in window) {
   inlineCtas.forEach((cta) => observer.observe(cta));
 }
 
-const adSlots = document.querySelectorAll("ins.adsbygoogle");
+// Destaque dos blocos de anúncio para conferir o layout:
+// ?anuncios=destaque liga e ?anuncios=normal desliga (a escolha fica salva no navegador)
+const ADS_PREVIEW_KEY = "descontado:anuncios-destaque";
 
-if (adSlots.length > 0) {
-  window.adsbygoogle = window.adsbygoogle || [];
-  adSlots.forEach(() => window.adsbygoogle.push({}));
+function readAdsPreview() {
+  const param = new URLSearchParams(window.location.search).get("anuncios");
+  try {
+    if (param === "destaque") {
+      localStorage.setItem(ADS_PREVIEW_KEY, "1");
+    } else if (param === "normal") {
+      localStorage.removeItem(ADS_PREVIEW_KEY);
+    }
+    return localStorage.getItem(ADS_PREVIEW_KEY) === "1";
+  } catch {
+    return param === "destaque";
+  }
+}
+
+function renderAdsPreview() {
+  document.documentElement.classList.add("ads-preview");
+
+  document.querySelectorAll(".ad-slot").forEach((slot) => {
+    slot.insertAdjacentHTML(
+      "beforeend",
+      `<div class="ad-mock" aria-hidden="true">
+        <div class="ad-mock-image"></div>
+        <div class="ad-mock-body">
+          <strong>Anúncio de exemplo</strong>
+          <span>Assim um anúncio do Google apareceria neste espaço.</span>
+          <small>anunciante.com.br</small>
+        </div>
+        <span class="ad-mock-button">Abrir</span>
+      </div>`,
+    );
+    const name = document.createElement("p");
+    name.className = "ad-preview-name";
+    name.textContent = slot.dataset.adPreview || "Bloco de anúncio";
+    slot.append(name);
+  });
+
+  const toggle = document.createElement("a");
+  toggle.className = "ads-preview-toggle";
+  toggle.href = "?anuncios=normal";
+  toggle.textContent = "Destaque de anúncios ligado · desligar";
+  document.body.append(toggle);
+}
+
+// Só pede anúncio para blocos com ID numérico do AdSense; os demais (marcadores SLOT_*) ficam escondidos
+const adSlots = [...document.querySelectorAll("ins.adsbygoogle")];
+const readyAdSlots = adSlots.filter((ad) => /^\d+$/.test(ad.dataset.adSlot || ""));
+
+if (readAdsPreview()) {
+  renderAdsPreview();
+} else {
+  adSlots
+    .filter((ad) => !readyAdSlots.includes(ad))
+    .forEach((ad) => ad.closest(".ad-slot")?.setAttribute("hidden", ""));
+
+  if (readyAdSlots.length > 0) {
+    window.adsbygoogle = window.adsbygoogle || [];
+    readyAdSlots.forEach(() => window.adsbygoogle.push({}));
+  }
 }
 
 if (currentYear) {
