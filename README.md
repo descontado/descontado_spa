@@ -21,6 +21,16 @@ Não faz parte deste projeto: nenhuma integração com os serviços do Descontad
   canonical e o Open Graph no `index.html`) se o domínio for outro.
 - `BingSiteAuth.xml` confirma a propriedade do site no Bing Webmaster Tools.
 
+### Anúncios (AdSense)
+
+- `index.html` tem os blocos A, B e C e `privacidade.html` os blocos P1 e P2 (`aside.ad-slot`, com o
+  nome do bloco em `data-ad-preview`).
+- O `script.js` só pede anúncio ao Google para blocos com `data-ad-slot` numérico. Blocos ainda com o
+  marcador `SLOT_BLOCO_*` ficam escondidos, junto com a faixa em volta.
+- `?anuncios=destaque` liga o destaque dos blocos, para conferir o layout: borda, anúncio simulado e
+  nome de cada bloco, sem pedir anúncio real. A escolha fica salva no navegador (`localStorage`) e
+  `?anuncios=normal`, ou o link fixo no rodapé da tela, desliga.
+
 ## Requisitos
 
 - Um navegador. Não usa Node.js nem npm.
