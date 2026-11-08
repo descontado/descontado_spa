@@ -69,8 +69,9 @@ npm run lint
 ```
 
 O lint verifica o `script.js`; o `package.json` existe só para ele, e o site continua sem build. Os
-hooks de `.githooks/`, ativados pelo `npm install`, recusam commit e push na `main` e rodam o lint
-antes de cada commit. O CI (`.github/workflows/ci.yml`) roda o lint em todo Pull Request.
+hooks de `.githooks/`, ativados pelo `npm install`, recusam commit e push na `main`, bloqueiam
+atribuições ou menções a assistentes de IA na mensagem e rodam o lint antes de cada commit. O CI
+(`.github/workflows/ci.yml`) roda o lint em todo Pull Request.
 
 ## Estrutura
 
@@ -85,7 +86,7 @@ sitemap.xml         Mapa do site
 BingSiteAuth.xml    Verificação do Bing Webmaster Tools
 favicon.ico, apple-touch-icon.png
 package.json        Só para o lint (ESLint)
-.githooks/          Hooks de Git (pre-commit e pre-push)
+.githooks/          Hooks de Git (pre-commit, commit-msg e pre-push)
 .github/workflows/ci.yml  CI do Pull Request
 ```
 

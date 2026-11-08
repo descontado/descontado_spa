@@ -1,0 +1,24 @@
+#!/bin/sh
+
+if [ "$#" -ne 1 ] || [ ! -f "$1" ]; then
+  echo "commit-msg: caminho da mensagem de commit ausente ou inválido." >&2
+  exit 2
+fi
+
+pattern='co-authored-by|co-authored by|generated with|ai assistant|assistente(s)? de ia|copilot|claude([[:space:]]+code)?|chatgpt|openai|codex|gemini|cursor([[:space:]]+ai)?|codeium|windsurf|tabnine|aider|amazon q([[:space:]]+developer)?|codewhisperer|devin|cline|roo code|sourcegraph[[:space:]]+cody|jetbrains[[:space:]]+ai|replit[[:space:]]+ai'
+LC_ALL=C grep -Eiq "$pattern" "$1"
+result=$?
+
+case "$result" in
+  0)
+    echo "commit-msg: trailers ou menções a assistentes de IA não são permitidos." >&2
+    exit 1
+    ;;
+  1)
+    exit 0
+    ;;
+  *)
+    echo "commit-msg: não foi possível validar a mensagem do commit." >&2
+    exit 2
+    ;;
+esac
